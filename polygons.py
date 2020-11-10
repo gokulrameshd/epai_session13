@@ -2,8 +2,14 @@
 
 from math import *
 class polygons:
+    """
+    This class calculates the interior angle ,
+    apothem , perimeter, area 
+    """
     def __init__(self,n,r):
         self.n = n
+        if n < 3:
+            raise ValueError("n must be greater then 3")
         self.r = r
         self.s = self.edge_length()
         self.ia = self.interior_angle()
@@ -19,18 +25,19 @@ class polygons:
     def apothem(self):
         a = self.r * cos(pi/self.n)
         return a
+    # @property
     def area(self):
         s = self.edge_length()
         a = self.apothem()
         ar = (self.n * s * a)/2
-        return ar
+        return (ar)
+    # @property
     def perimeter(self):
         s = self.edge_length()
         per = self.n * s
-        return per
+        return (per)
     def __repr__(self):
-        print("This class create the convex polygons and\
-        calculates their attributes")
+        return f'No of sides :{self.n} , \n Radius : {self.r}'
     def __eq__(self,other):
         return (self.n == other.n) and (self.r == other.r)
     def __gt__(self,other):
